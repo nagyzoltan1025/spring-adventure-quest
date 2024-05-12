@@ -1,12 +1,14 @@
-package com.letslearnsomething.spring.adventure.quest.beans;
+package com.letslearnsomething.spring.adventure.quest.models;
 
-import com.letslearnsomething.spring.adventure.quest.enums.Direction;
+import com.letslearnsomething.spring.adventure.quest.utils.enums.Direction;
 import org.springframework.stereotype.Component;
 
 import java.util.Map;
 
 @Component
 public class Scene {
+
+    Long id;
 
     String image;
 
@@ -17,10 +19,19 @@ public class Scene {
     public Scene() {
     }
 
-    public Scene(String image, String description, Map<Direction, Scene> directionsMap) {
+    public Scene(Long id, String image, String description, Map<Direction, Scene> directionsMap) {
+        this.id = id;
         this.image = image;
         this.description = description;
         this.directionsMap = directionsMap;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getImage() {
