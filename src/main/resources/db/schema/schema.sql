@@ -1,20 +1,14 @@
-CREATE TABLE IF NOT EXISTS users
+CREATE TABLE scenes
 (
-    id
-    INT
-    AUTO_INCREMENT
-    PRIMARY
-    KEY,
-    name
-    VARCHAR
-(
-    50
-),
-    email VARCHAR
-(
-    100
-),
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-    );
+    id          BIGINT AUTO_INCREMENT PRIMARY KEY,
+    image       BLOB,
+    description VARCHAR(1024)
+);
 
-CREATE TABLE IF NOT EXISTS scenes (id, )
+CREATE TABLE scene_directions (
+                                  id BIGINT AUTO_INCREMENT PRIMARY KEY,
+                                  scene_source_id BIGINT NOT NULL,
+                                  scene_destination_id BIGINT NOT NULL,
+                                  FOREIGN KEY (scene_source_id) REFERENCES scenes(id),
+                                  FOREIGN KEY (scene_destination_id) REFERENCES scenes(id)
+);
