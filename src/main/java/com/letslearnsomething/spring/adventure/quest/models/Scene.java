@@ -1,29 +1,32 @@
 package com.letslearnsomething.spring.adventure.quest.models;
 
-import com.letslearnsomething.spring.adventure.quest.utils.enums.Direction;
-import org.springframework.stereotype.Component;
+import jakarta.persistence.*;
 
-import java.util.Map;
+import java.util.HashSet;
+import java.util.Set;
 
-@Component
+@Entity
+@Table(name="scenes")
 public class Scene {
 
+    @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
     Long id;
 
     String image;
 
     String description;
 
-    Map<Direction, Scene> directionsMap;
+    @ManyToMany
+    @JoinTable(
+            name="scene_directions",
+            joinColumns = @JoinColumn(name="scene_source_id"),
+            inverseJoinColumns = @JoinColumn(name="scene_destination_id")
+    )
+    Set<Scene> directions;
 
     public Scene() {
-    }
-
-    public Scene(Long id, String image, String description, Map<Direction, Scene> directionsMap) {
-        this.id = id;
-        this.image = image;
-        this.description = description;
-        this.directionsMap = directionsMap;
+        this.directions = new HashSet<>();
     }
 
     public Long getId() {
@@ -50,11 +53,11 @@ public class Scene {
         this.description = description;
     }
 
-    public Map<Direction, Scene> getDirectionsMap() {
-        return directionsMap;
+    public Set<Scene> getDirections() {
+        return directions;
     }
 
-    public void setDirectionsMap(Map<Direction, Scene> directionsMap) {
-        this.directionsMap = directionsMap;
+    public void setDirections(Set<Scene> directions) {
+        this.directions = directions;
     }
 }
