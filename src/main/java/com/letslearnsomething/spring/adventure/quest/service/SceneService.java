@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 @Service
 public class SceneService {
@@ -16,6 +17,10 @@ public class SceneService {
 
     public List<Scene> getAllScenes() {
         return this.sceneRepository.findAll();
+    }
+
+    public Set<Scene> getSceneDirections(Long currentSceneId) {
+        return this.sceneRepository.getReferenceById(currentSceneId).getDirections();
     }
 
     public Optional<Scene> getSceneById(Long id) {
