@@ -34,4 +34,8 @@ public class SceneService {
     public void deleteScene(Long id) {
         this.sceneRepository.deleteById(id);
     }
+
+    public Scene save(Scene newScene) {
+        return this.sceneRepository.save(newScene);
+    }
 }
