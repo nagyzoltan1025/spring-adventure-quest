@@ -1,4 +1,4 @@
-package com.letslearnsomething.spring.adventure.quest.models;
+package com.nagyzoltan1025.spring.adventure.quest.models;
 
 import jakarta.persistence.*;
 

@@ -8,7 +8,7 @@
 		<version>3.2.5</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.letslearnsomething</groupId>
+	<groupId>com.nagyzoltan1025</groupId>
 	<artifactId>spring-adventure-quest</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>spring-adventure-quest</name>

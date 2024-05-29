@@ -1,7 +1,7 @@
-package com.letslearnsomething.spring.adventure.quest;
+package com.nagyzoltan1025.spring.adventure.quest;
 
-import com.letslearnsomething.spring.adventure.quest.models.Scene;
-import com.letslearnsomething.spring.adventure.quest.service.SceneService;
+import com.nagyzoltan1025.spring.adventure.quest.models.Scene;
+import com.nagyzoltan1025.spring.adventure.quest.service.SceneService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

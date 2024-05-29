@@ -1,4 +1,4 @@
-package com.letslearnsomething.spring.adventure.quest;
+package com.nagyzoltan1025.spring.adventure.quest;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

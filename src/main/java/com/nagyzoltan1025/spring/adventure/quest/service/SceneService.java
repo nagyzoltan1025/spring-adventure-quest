@@ -1,7 +1,7 @@
-package com.letslearnsomething.spring.adventure.quest.service;
+package com.nagyzoltan1025.spring.adventure.quest.service;
 
-import com.letslearnsomething.spring.adventure.quest.models.Scene;
-import com.letslearnsomething.spring.adventure.quest.repository.SceneRepository;
+import com.nagyzoltan1025.spring.adventure.quest.models.Scene;
+import com.nagyzoltan1025.spring.adventure.quest.repository.SceneRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
