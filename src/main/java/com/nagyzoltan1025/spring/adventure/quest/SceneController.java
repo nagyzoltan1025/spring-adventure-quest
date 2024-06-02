@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 @RestController
@@ -22,6 +23,12 @@ public class SceneController {
     @GetMapping()
     public List<Scene> getAllScenes() {
         return this.sceneService.getAllScenes();
+    }
+
+    @GetMapping("/{id}")
+    public Scene getSceneById(@PathVariable Long id) {
+        Optional<Scene> scene = this.sceneService.getSceneById(id);
+        return scene.orElse(null);
     }
 
     @GetMapping("directions/{id}")

@@ -1,6 +1,9 @@
 GET localhost:8080/api/scenes
 
 ###
+GET http://localhost:8080/api/scenes/1
+
+###
 GET http://localhost:8080/api/scenes/directions/1
 
 
