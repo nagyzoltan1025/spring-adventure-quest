@@ -12,8 +12,12 @@ import java.util.Set;
 @Service
 public class SceneService {
 
+    private final SceneRepository sceneRepository;
+
     @Autowired
-    private SceneRepository sceneRepository;
+    public SceneService(SceneRepository sceneRepository) {
+        this.sceneRepository = sceneRepository;
+    }
 
     public List<Scene> getAllScenes() {
         return this.sceneRepository.findAll();

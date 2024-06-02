@@ -12,8 +12,12 @@ import java.util.Set;
 @RequestMapping("api/scenes")
 public class SceneController {
 
+    private final SceneService sceneService;
+
     @Autowired
-    private SceneService sceneService;
+    public SceneController(SceneService sceneService) {
+        this.sceneService = sceneService;
+    }
 
     @GetMapping()
     public List<Scene> getAllScenes() {
