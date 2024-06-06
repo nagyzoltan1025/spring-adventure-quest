@@ -3,16 +3,27 @@ GET localhost:8080/api/scenes
 ###
 GET http://localhost:8080/api/scenes/1
 
-###
-GET http://localhost:8080/api/scenes/directions/1
 
 
-###
+### Scene - create new scene
 POST http://localhost:8080/api/scenes
 Content-Type: application/json
 
 {
-  "id": 5,
   "image": null,
   "description": "This is another description"
 }
+
+
+### Scene - modify scene
+PUT http://localhost:8080/api/scenes/1
+Content-Type: application/json
+
+{
+  "image": null,
+  "description": "This is a new description."
+}
+
+
+###
+GET http://localhost:8080/api/scenes/directions/1
