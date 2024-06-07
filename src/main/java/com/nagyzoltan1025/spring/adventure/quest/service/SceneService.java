@@ -3,6 +3,7 @@ package com.nagyzoltan1025.spring.adventure.quest.service;
 import com.nagyzoltan1025.spring.adventure.quest.models.Scene;
 import com.nagyzoltan1025.spring.adventure.quest.repository.SceneRepository;
 import jakarta.persistence.EntityNotFoundException;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -36,12 +37,12 @@ public class SceneService {
         return this.sceneRepository.save(scene);
     }
 
-    public Optional<Scene> updateScene(Long id, Scene scene) {
-        return Optional.ofNullable(
-                this.sceneRepository.findById(id)
-                        .map(this.sceneRepository::save)
-                        .orElseThrow(() -> new EntityNotFoundException("Could not find scene"))
-        );
+    public Scene updateScene(Long id, Scene sceneArg) {
+        return this.sceneRepository.findById(id)
+                                   .map(scene -> {
+                                       BeanUtils.copyProperties(sceneArg, scene, "id");
+                                       return this.sceneRepository.save(scene);
+                                   }).orElseThrow(() -> new EntityNotFoundException("Scene not found with id: " + id));
     }
 
     public void deleteScene(Long id) {

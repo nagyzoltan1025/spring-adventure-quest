@@ -39,10 +39,9 @@ public class SceneController {
     }
 
     @PutMapping(ApiPath.SCENES_ID_PARAM)
-    public ResponseEntity<Scene> updateScene(@PathVariable Long id, @RequestBody Scene scene) {
-        return this.sceneService.updateScene(id, scene)
-                .map(ResponseEntity::ok)
-                .orElseGet(() -> ResponseEntity.notFound().build());
+    public ResponseEntity<Scene> updateScene(@PathVariable Long id, @RequestBody Scene newScene) {
+        Scene scene = this.sceneService.updateScene(id, newScene);
+        return ResponseEntity.ok(scene);
     }
 
 
