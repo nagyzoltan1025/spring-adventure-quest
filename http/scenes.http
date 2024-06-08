@@ -1,11 +1,12 @@
+### Get all Scenes
 GET localhost:8080/api/scenes
 
-###
+### Get Scene by Id
 GET http://localhost:8080/api/scenes/1
 
 
 
-### Scene - create new scene
+### Save Scene
 POST http://localhost:8080/api/scenes
 Content-Type: application/json
 
@@ -15,7 +16,7 @@ Content-Type: application/json
 }
 
 
-### Scene - modify scene
+### Modify Scene
 PUT http://localhost:8080/api/scenes/1
 Content-Type: application/json
 
@@ -24,6 +25,9 @@ Content-Type: application/json
   "description": "This is a new description."
 }
 
+### Delete Scene
+DELETE http://localhost:8080/api/scenes/1
 
-###
+
+### Get directions
 GET http://localhost:8080/api/scenes/directions/1
