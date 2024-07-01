@@ -4,6 +4,7 @@ import com.nagyzoltan1025.spring.adventure.quest.config.ApiPath;
 import com.nagyzoltan1025.spring.adventure.quest.models.Scene;
 import com.nagyzoltan1025.spring.adventure.quest.service.SceneService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,19 +24,19 @@ public class SceneController {
     }
 
     @GetMapping()
-    public List<Scene> getAllScenes() {
-        return this.sceneService.getAllScenes();
+    public ResponseEntity<List<Scene>> getAllScenes() {
+        return ResponseEntity.ok(this.sceneService.getAllScenes());
     }
 
     @PostMapping()
-    public Scene createOrUpdateScene(@RequestBody Scene newScene) {
-        return this.sceneService.createScene(newScene);
+    public ResponseEntity<Scene> createOrUpdateScene(@RequestBody Scene newScene) {
+        return ResponseEntity.ok(this.sceneService.createScene(newScene));
     }
 
     @GetMapping(ApiPath.SCENES_ID_PARAM)
-    public Scene getSceneById(@PathVariable Long id) {
+    public ResponseEntity<Scene> getSceneById(@PathVariable Long id) {
         Optional<Scene> scene = this.sceneService.getSceneById(id);
-        return scene.orElse(null);
+        return scene.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_FOUND).build());
     }
 
     @PutMapping(ApiPath.SCENES_ID_PARAM)
@@ -51,7 +52,7 @@ public class SceneController {
     }
 
     @GetMapping(ApiPath.SCENES_DIRECTIONS_ID_PARAM)
-    public Set<Scene> getDirectionForScene(@PathVariable Long id) {
-        return this.sceneService.getSceneDirections(id);
+    public ResponseEntity<Set<Scene>> getDirectionForScene(@PathVariable Long id) {
+        return ResponseEntity.ok(this.sceneService.getSceneDirections(id));
     }
 }

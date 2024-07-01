@@ -26,7 +26,7 @@ public class SceneService {
     }
 
     public Set<Scene> getSceneDirections(Long currentSceneId) {
-        return this.sceneRepository.getReferenceById(currentSceneId).getDirections();
+        return this.sceneRepository.findById(currentSceneId).map(Scene::getDirections).orElse(Set.of());
     }
 
     public Optional<Scene> getSceneById(Long id) {
